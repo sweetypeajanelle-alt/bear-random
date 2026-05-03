@@ -12,7 +12,7 @@ function preload() {
 		},
 		{
 			img: loadImage('bear-shy.gif'),
-			duration: 12000
+			duration: 12100
 		},
 		{
 			img: loadImage('bear-walking.gif'),
