@@ -8,15 +8,15 @@ let delayStart = 0;
 function preload() {
 	gifs = [{
 			img: loadImage('bear-heart.gif'),
-			duration: 7960
+			duration: 9000
 		},
 		{
 			img: loadImage('bear-shy.gif'),
-			duration: 9560
+			duration: 12000
 		},
 		{
 			img: loadImage('bear-walking.gif'),
-			duration: 6000
+			duration: 7000
 		}
 	];
 }
