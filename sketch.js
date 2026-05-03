@@ -8,11 +8,11 @@ let delayStart = 0;
 function preload() {
 	gifs = [{
 			img: loadImage('bear-heart.gif'),
-			duration: 9000
+			duration: 8800
 		},
 		{
 			img: loadImage('bear-shy.gif'),
-			duration: 12100
+			duration: 11900
 		},
 		{
 			img: loadImage('bear-walking.gif'),
@@ -22,14 +22,10 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  imageMode(CENTER);
-  sequence = shuffle(gifs);
-  startGif();
-}
+	createCanvas(800, 800);
+	sequence = shuffle(gifs);
+	startGif();
 
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
@@ -41,7 +37,7 @@ function draw() {
 
   // Only draw gif if we're not in delay
   if (!isWaiting) {
-    image(currentGif.img, width/2, height/2, min(width, height), min(width, height));
+    image(currentGif.img, width / 2, height / 2, 800, 800);
 
     // check if gif finished
     if (millis() - startTime > currentGif.duration) {
