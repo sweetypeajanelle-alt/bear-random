@@ -22,10 +22,14 @@ function preload() {
 }
 
 function setup() {
-	createCanvas(800, 800);
-	sequence = shuffle(gifs);
-	startGif();
+  createCanvas(windowWidth, windowHeight);
+  imageMode(CENTER);
+  sequence = shuffle(gifs);
+  startGif();
+}
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
