@@ -41,7 +41,7 @@ function draw() {
 
   // Only draw gif if we're not in delay
   if (!isWaiting) {
-    image(currentGif.img, width / 2, height / 2, 800, 800);
+    image(currentGif.img, width/2, height/2, min(width, height), min(width, height));
 
     // check if gif finished
     if (millis() - startTime > currentGif.duration) {
