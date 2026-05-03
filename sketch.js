@@ -5,6 +5,7 @@ let startTime = 0;
 let isWaiting = false;
 let delayTime = 1000; // 1 second
 let delayStart = 0;
+
 function preload() {
 	gifs = [{
 			img: loadImage('bear-heart.gif'),
@@ -22,44 +23,48 @@ function preload() {
 }
 
 function setup() {
-	createCanvas(800, 800);
+	createCanvas(windowWidth, windowHeight);
+	imageMode(CENTER);
 	sequence = shuffle(gifs);
 	startGif();
+}
 
+function windowResized() {
+	resizeCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
-  background("white");
+	background("white");
 
-  let currentGif = sequence[currentIndex];
+	let currentGif = sequence[currentIndex];
 
-  imageMode(CENTER);
+	imageMode(CENTER);
 
-  // Only draw gif if we're not in delay
-  if (!isWaiting) {
-    image(currentGif.img, width / 2, height / 2, 800, 800);
+	// Only draw gif if we're not in delay
+	if (!isWaiting) {
+		image(currentGif.img, width / 2, height / 2, min(width, height), min(width, height));
 
-    // check if gif finished
-    if (millis() - startTime > currentGif.duration) {
-      isWaiting = true;
-      delayStart = millis();
-    }
-  } else {
-    // during delay (screen stays blank or background only)
+		// check if gif finished
+		if (millis() - startTime > currentGif.duration) {
+			isWaiting = true;
+			delayStart = millis();
+		}
+	} else {
+		// during delay (screen stays blank or background only)
 
-    if (millis() - delayStart > delayTime) {
-      // move to next gif after delay
-      currentIndex++;
+		if (millis() - delayStart > delayTime) {
+			// move to next gif after delay
+			currentIndex++;
 
-      if (currentIndex >= sequence.length) {
-        sequence = shuffle(gifs);
-        currentIndex = 0;
-      }
+			if (currentIndex >= sequence.length) {
+				sequence = shuffle(gifs);
+				currentIndex = 0;
+			}
 
-      startGif();
-      isWaiting = false;
-    }
-  }
+			startGif();
+			isWaiting = false;
+		}
+	}
 }
 
 function startGif() {
